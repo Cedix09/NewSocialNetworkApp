@@ -18,6 +18,7 @@ namespace winrt::SocialNetworkApp::implementation
         InitializeComponent();
         SetupTitleBar();
 
+        LoadAnimation().Begin();
         DisplayOutput(L"🚀 Социальная сеть запущена\n");
         DisplayOutput(L"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
         DisplayOutput(L"Добро пожаловать! Начните добавлять пользователей.\n\n");
@@ -257,5 +258,30 @@ namespace winrt::SocialNetworkApp::implementation
         output << L"\n";
         return output.str();
     }
+    void MainWindow::ShowNotification(const std::wstring& message, int severity)
+    {
+        NotificationBar().Message(message);
+
+        // 0 = Success, 1 = Warning, 2 = Error, 3 = Informational
+        switch (severity)
+        {
+        case 0: NotificationBar().Severity(Microsoft::UI::Xaml::Controls::InfoBarSeverity::Success); break;
+        case 1: NotificationBar().Severity(Microsoft::UI::Xaml::Controls::InfoBarSeverity::Warning); break;
+        case 2: NotificationBar().Severity(Microsoft::UI::Xaml::Controls::InfoBarSeverity::Error); break;
+        case 3: NotificationBar().Severity(Microsoft::UI::Xaml::Controls::InfoBarSeverity::Informational); break;
+        }
+
+        NotificationBar().IsOpen(true);
+    }
+    void MainWindow::ShowTipButton_Click(winrt::Windows::Foundation::IInspectable const&, winrt::Microsoft::UI::Xaml::RoutedEventArgs const&)
+    {
+        AddUserTip().IsOpen(true);
+    }
+    void MainWindow::RefreshButton_Click(winrt::Windows::Foundation::IInspectable const&, winrt::Microsoft::UI::Xaml::RoutedEventArgs const&)
+    {
+        // Пока пустой или логика обновления
+        OutputTextBlock().Text(L"Граф обновлён\n");
+    }
+
 }
 

@@ -22,6 +22,13 @@ namespace winrt::SocialNetworkApp::implementation
             Microsoft::UI::Xaml::RoutedEventArgs const& e);
         void FindCommonButton_Click(Windows::Foundation::IInspectable const& sender,
             Microsoft::UI::Xaml::RoutedEventArgs const& e);
+        void ShowTipButton_Click(winrt::Windows::Foundation::IInspectable const& sender,
+            winrt::Microsoft::UI::Xaml::RoutedEventArgs const& args);
+        void RefreshButton_Click(winrt::Windows::Foundation::IInspectable const& sender, 
+            winrt::Microsoft::UI::Xaml::RoutedEventArgs const& args);
+     
+
+
 
     private:
         std::map<std::wstring, std::set<std::wstring>> socialGraph;
@@ -34,6 +41,7 @@ namespace winrt::SocialNetworkApp::implementation
         void DisplayOutput(const std::wstring& message);
         std::wstring GetAllUsers();
         void SetupTitleBar();
+        void ShowNotification(const std::wstring& message, int severity);
     };
 }
 
