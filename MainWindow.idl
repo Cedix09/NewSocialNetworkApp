@@ -1,0 +1,13 @@
+namespace SocialNetworkApp
+{
+    [default_interface]
+    runtimeclass MainWindow : Microsoft.UI.Xaml.Window
+    {
+        MainWindow();
+    void AddUserButton_Click(Object sender, Microsoft.UI.Xaml.RoutedEventArgs e);
+    void AddFriendshipButton_Click(Object sender, Microsoft.UI.Xaml.RoutedEventArgs e);
+    void ShowFriendsButton_Click(Object sender, Microsoft.UI.Xaml.RoutedEventArgs e);
+    void FindCommonButton_Click(Object sender, Microsoft.UI.Xaml.RoutedEventArgs e);
+
+    }
+}
